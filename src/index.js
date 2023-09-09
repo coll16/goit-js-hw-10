@@ -68,3 +68,27 @@ function onSelect(evt) {
     });
 }
 
+
+function createMarkupSelect(arr) {
+  return (
+    '<option value="" disabled selected>Choose your cat...</option>' +
+    arr.map(({ id, name }) => `<option value=${id}>${name}</option>`).join('')
+  );
+}
+
+function createMarkupInfo({ url, breeds }) {
+  const { name, temperament, description } = breeds[0];
+  return `<img src="${url}" alt="${name}" width = 450>
+      <div><h2>Breed: ${name}</h2>
+      <h3>Temperament: ${temperament}</h3>
+      <h4>Description</h4>
+      <p>${description}</p></div>`;
+}
+
+function hideElement(...elems) {
+  elems.forEach(i => i.classList.toggle('hidden'));
+}
+
+function findRef(queryEl, classN) {
+  return [...queryEl].find(i => i.className === classN);
+}
